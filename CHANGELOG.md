@@ -2,6 +2,12 @@
 
 ## What's New
 
+### What's New in Version 0.9.9.2
+* remove composer dependecies that are already provided by icinga-php-thirdparty
+
+### What's New in Version 0.9.9.1
+* do not adjust multiple visualisations if the same host and service is used in on dashboard
+
 ### What's New in Version 0.9.9
 
 * do not break in case the metric thresholds or units are not available

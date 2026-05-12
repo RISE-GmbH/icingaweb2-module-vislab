@@ -90,7 +90,7 @@ class GrapherHelper
         // Preserve timerange if set
         $parameters['timerange'] = $this->timerange;
         $parameters['metric'] = $this->metric;
-        $id = sha1($titel);
+        $id = sha1($titel.$this->metric);
 
         $visibilities = [];
         //visibility

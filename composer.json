@@ -17,5 +17,15 @@
     "allow-plugins": {
       "php-http/discovery": true
     }
+  },
+  "replace": {
+    "psr/http-client": "*",
+    "psr/http-factory": "*",
+    "psr/http-message": "*",
+    "guzzlehttp/guzzle": "*",
+    "guzzlehttp/promise": "*",
+    "guzzlehttp/psr7": "*",
+    "symfony/deprecation-contracts": "*",
+    "ralouphie/getallheaders": "*"
   }
 }

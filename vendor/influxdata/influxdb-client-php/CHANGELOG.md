@@ -1,4 +1,9 @@
-## 3.7.0 [2024-02-21]
+## 3.8.0 [2026-06-26]
+
+### Bug Fixes
+1. [#166](https://github.com/influxdata/influxdb-client-php/pull/166): Fix PHP 8.4 deprecated implicit nullable arguments. PHP minimum version is still PHP 7.2.
+
+## 3.7.0 [2025-02-21]
 
 ### Bug Fixes
 1. [#162](https://github.com/influxdata/influxdb-client-php/issues/162): PHP 8.4 - fgetcsv() needs provide explicitly argument escape

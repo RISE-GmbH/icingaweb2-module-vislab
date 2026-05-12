@@ -15,7 +15,7 @@ class Client
     /**
      * Client version updated by: 'make release VERSION=1.5.0'
      */
-    const VERSION = '3.7.0';
+    const VERSION = '3.8.0';
 
     public $options;
     public $closed = false;
@@ -73,7 +73,7 @@ class Client
      * @param array|null $pointSettings Array of default tags
      * @return WriteApi
      */
-    public function createWriteApi(array $writeOptions = null, array $pointSettings = null): WriteApi
+    public function createWriteApi(?array $writeOptions = null, ?array $pointSettings = null): WriteApi
     {
         $writeApi = new WriteApi($this->options, $writeOptions, $pointSettings);
         $this->autoCloseable[] = $writeApi;
