@@ -71,8 +71,13 @@ export default Chart;
 
     }
     public function initNpm($dir){
+        $this->execute('npm', ['install', '--package-lock-only'],$dir);
+        $this->execute('npm', ['audit', 'fix'],$dir);
+        $this->execute('npm', ['audit', 'fix', '--force'],$dir);
+
         $this->execute('npm', ['install', '--save-dev', 'chart.js', 'chartjs-plugin-zoom', 'hammerjs'],$dir);
 
+        $this->execute('npm', ['install', 'package-lock-only'],$dir);
         $this->execute('npm', ['install', '--save-dev', 'microbundle'],$dir);
 
     }
