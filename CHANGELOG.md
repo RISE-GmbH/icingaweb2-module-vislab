@@ -2,6 +2,10 @@
 
 ## What's New
 
+### What's New in Version 0.9.9.3
+* Introduce max-width for rendering in host/service view
+* updated chartbundle.umd.js
+
 ### What's New in Version 0.9.9.2
 * remove composer dependecies that are already provided by icinga-php-thirdparty
 

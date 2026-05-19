@@ -39,9 +39,6 @@ class ModuleconfigForm extends ConfigForm
             'multiOptions' => ['icingadb'=>'icingadb', 'monitoring'=>'monitoring (ido)']
         ]);
 
-
-
-
         $this->addElement('checkbox','settings_showthresholds',
             [
                 'label' => $this->translate('Show Thresholds in Graph'),
@@ -64,50 +61,23 @@ class ModuleconfigForm extends ConfigForm
             ]
         );
 
+        $this->addElement('number', 'settings_hook_max_width_value', [
+            'label' => $this->translate('Hook max width (value)'),
+            'description' => $this->translate(
+                'Maximum width of the graph container on host/service detail view (hook only, not dashlets). Value is in percent or pixels depending on unit.'
+            ),
+            'required' => true,
+            'value' => 100,
 
+        ]);
 
+        $this->addElement('select', 'settings_hook_max_width_unit', [
+            'label' => $this->translate('Hook max width (unit)'),
+            'description' => $this->translate('Unit for the hook max width value.'),
+            'required' => true,
+            'multiOptions' => ['percent' => $this->translate('Percent'), 'pixel' => $this->translate('Pixel')],
+            'value' => 'percent'
+        ]);
 
     }
-    public function onRequest()
-    {
-        parent::onRequest();
-        foreach ($this->getElements() as $element) {
-            if ($element->getType() === 'Zend_Form_Element_Password' && strlen($element->getValue())) {
-                $element->setValue(static::$dummyPassword);
-            }
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getValues($suppressArrayNotation = false)
-    {
-        $values = parent::getValues($suppressArrayNotation);
-        $resource = "settings";
-        if ($resource !== null && $this->config->hasSection($resource)) {
-
-            $resourceConfig = $this->config->getSection($resource)->toArray();
-
-            foreach ($this->getElements() as $element) {
-                if ($element->getType() === 'Zend_Form_Element_Password') {
-                    $name = $element->getName();
-                    $name2 = str_replace($resource . "_", "", $name);
-
-                    if (isset($values[$name]) && $values[$name] === static::$dummyPassword) {
-                        if (isset($resourceConfig[$name2])) {
-                            $values[$name] = $resourceConfig[$name2];
-                        } else {
-                            unset($values[$name]);
-                        }
-
-                    }
-                }
-            }
-        }
-
-        return $values;
-    }
-
-
 }

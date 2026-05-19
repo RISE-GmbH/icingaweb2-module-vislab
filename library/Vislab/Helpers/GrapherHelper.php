@@ -187,4 +187,14 @@ class GrapherHelper
 
     }
 
+    public function getStyleDefaults(): array
+    {
+        $value = (int) Config::module('vislab')->get('settings', 'hook_max_width_value', 100);
+        $unit = Config::module('vislab')->get('settings', 'hook_max_width_unit', 'percent');
+
+        if ($unit === 'pixel') {
+            return ['max-width' => $value . 'px'];
+        }
+        return ['max-width' => $value . '%'];
+    }
 }

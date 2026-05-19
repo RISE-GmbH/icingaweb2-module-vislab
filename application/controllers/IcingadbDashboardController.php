@@ -90,6 +90,7 @@ class IcingadbDashboardController extends Controller
             $graph = new HostDetailExtension();
             $object = $this->host;
         }
+        $graph->setAsDashboard(true);
         $this->addContent($graph->getHtmlForObject($object));
 
 

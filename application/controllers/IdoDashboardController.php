@@ -48,6 +48,7 @@ class IdoDashboardController extends Controller
         ));
 
         $graph = new DetailviewExtension();
+        $graph->setAsDashboard(true);
         $this->view->content = $graph->getHtmlForObject($this->object);
     }
 

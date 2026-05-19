@@ -9,9 +9,11 @@ use Icinga\Module\Vislab\Helpers\GrapherHelper;
 
 use ipl\Html\Html;
 use ipl\Html\ValidHtml;
+use ipl\Web\Compat\StyleWithNonce;
 
 class HostDetailExtension extends HostDetailExtensionHook
 {
+    protected $asDashboard = false;
     public function getHtmlForObject(Host $host): ValidHtml
     {
         $hostname = $host->name;
@@ -21,6 +23,18 @@ class HostDetailExtension extends HostDetailExtensionHook
 
 
         $grapher = new GrapherHelper($hostname,$command_name,true,$perfdata,$servicename);
-        return Html::tag('div',['name'=>'vislab-icingadb'],$grapher->getHtmlForObject());
+        $div =  Html::tag('div',['name'=>'vislab-icingadb', 'class'=>'vislab-wrapper'],$grapher->getHtmlForObject());
+
+        if(!$this->asDashboard){
+            $graphStyle = (new StyleWithNonce());
+            $graphStyle->addFor($div, $grapher->getStyleDefaults());
+            $div->add($graphStyle);
+        }
+
+        return $div;
+    }
+    public function setAsDashboard(bool $asDashboard)
+    {
+        $this->asDashboard = $asDashboard;
     }
 }
