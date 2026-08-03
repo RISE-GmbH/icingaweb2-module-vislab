@@ -28,7 +28,17 @@ class IcingadbDashboardController extends Controller
     {
         $this->setAutorefreshInterval(60);
 
-        $hostname = $this->params->getRequired('host');
+
+        $name = $this->params->getRequired('name');
+        $HostnameCandidate = $this->params->get('host.name');
+        $servicename = null;
+        if($HostnameCandidate !== null) {
+            $hostname = $HostnameCandidate;
+            $servicename = $name;
+        }else{
+            $hostname = $name;
+        }
+
 
         $query = Host::on($this->getDb())->with(['state']);
         $query
@@ -44,7 +54,7 @@ class IcingadbDashboardController extends Controller
         }
 
         $this->host = $host;
-        $servicename = $this->params->get('service');
+
         if($servicename != null){
             $query = Service::on($this->getDb())->with([
                 'state',

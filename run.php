@@ -12,6 +12,7 @@ $this->provideHook('Icingadb/HostDetailExtension');
 
 
 $this->provideHook('Vislab\\ResourceConnection', '\Icinga\Module\Vislab\ProvidedHook\Vislab\VictoriaMetricsConnection');
+$this->provideHook('Vislab\\ResourceConnection', '\Icinga\Module\Vislab\ProvidedHook\Vislab\VictoriaMetricsOtelConnection');
 $this->provideHook('Vislab\\ResourceConnection', '\Icinga\Module\Vislab\ProvidedHook\Vislab\InfluxDb1Connection');
 $this->provideHook('Vislab\\ResourceConnection', '\Icinga\Module\Vislab\ProvidedHook\Vislab\InfluxDb2Connection');
 

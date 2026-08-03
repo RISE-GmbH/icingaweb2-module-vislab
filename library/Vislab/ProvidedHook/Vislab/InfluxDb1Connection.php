@@ -202,8 +202,8 @@ class InfluxDb1Connection extends ResourceConnectionHook
         foreach ($result as $entry) {
             $date = new DateTime(substr($entry['time'],0,19),(new \DateTimeZone("UTC")));
             $date->setTimezone(new \DateTimeZone(date_default_timezone_get()));
-            $labelwithDay = $date->format('Y-m-d H:i:s');
-            $labelwithoutDay = $date->format('H:i:s');
+            $labelwithDay = $date->format('Y-m-d H:i');
+            $labelwithoutDay = $date->format('H:i');
 
             if($this->isToday($labelwithDay)){
                 $label = $labelwithoutDay;
