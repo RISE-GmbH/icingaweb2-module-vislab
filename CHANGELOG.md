@@ -2,6 +2,13 @@
 
 ## What's New
 
+### What's New in Version 0.9.9.5
+* bugfix for the icingadb dashboard feature
+
+
+### What's New in Version 0.9.9.4
+* added victoriametrics connection for data written by otelwriter
+
 ### What's New in Version 0.9.9.3
 * Introduce max-width for rendering in host/service view
 * updated chartbundle.umd.js

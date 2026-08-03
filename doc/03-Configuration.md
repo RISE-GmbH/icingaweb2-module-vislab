@@ -22,7 +22,7 @@ You can also show threshold by default and choose the gnuplot implementation.
 
 ## Datasource Configuration  <a id="module-vislab-configuration-datasource"></a>
 
-For victoriametrics you can use the following in icinga2:
+For victoriametrics using influxdb1writer you can use the following in icinga2:
 
 ```
 /**
@@ -58,3 +58,27 @@ object InfluxdbWriter "victoriametrics" {
 and the corresponding configuration in vislab should look like that:
 
 ![datasource](img/victoriametrics-datasource.png)
+
+For victoriametrics using otelwriter you can use the following in icinga2:
+
+```
+object OTLPMetricsWriter "otlvictoria" {
+  host = "127.0.0.1"
+  port = 8428
+
+  metrics_endpoint = "/opentelemetry/v1/metrics"
+  service_namespace = "icinga2-production"
+  
+# in case you use basic auth
+#  basic_auth = {
+#    username = "icinga"
+#    password = "secret"
+#  }
+
+  enable_send_thresholds = true
+}
+```
+
+and the corresponding configuration in vislab should look like that:
+
+![datasource2](img/victoriametrics-otel-datasource.png)
